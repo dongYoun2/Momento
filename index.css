@@ -59,14 +59,35 @@ body {
     }
 } */
 
-.js-clock {
+.js-clock,
+.js-greeting {
     color: white;
     animation: fadeIn 0.5s linear;
 }
 
+.js-userNameForm,
+.js-toDoForm,
+.js-toDoList {
+    animation: fadeIn 0.5s linear;
+}
+
+
 .hiding {
     display: none;
 }
+
 .showing {
     display: block;
+}
+
+.toDoListItem {
+    color: white;
+}
+
+.toDoNotDone {
+    text-decoration: none;
+}
+
+.toDoDone {
+    text-decoration: line-through;
 }

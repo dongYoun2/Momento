@@ -11,16 +11,31 @@
 
 <body>
     <div class="js-background"></div>
+
     <div class="js-clock">
         <h1></h1>
     </div>
+
     <form class="js-userNameForm hiding">
         <input type="text" placeholder="What is your name?">
     </form>
     <h4 class="js-greeting hiding"></h4>
 
-    <script src="clock.js"></script>
+    <form class="js-toDoForm  hiding">
+        <input type="text" placeholder="write a to-do">
+    </form>
+
+    <ul class="js-toDoList">
+    </ul>
+
+    <script>
+        //these are class names in CSS
+        const SHOWING_CN = "showing",
+            HIDING_CN = "hiding";
+    </script>
     <script src="greeting.js"></script>
+    <script src="toDo.js"></script>
+    <script src="clock.js"></script>
     <script src="background.js"></script>
 </body>
 

@@ -2,26 +2,29 @@ const user_name_form = document.querySelector(".js-userNameForm"),
     user_name_input = user_name_form.querySelector("input"),
     greeting = document.querySelector(".js-greeting");
 
-const USER_NAME_KEY_LS = "currentUser",
-    SHOWING_CN = "showing",
-    HIDING_CN = "hiding";
+const USER_NAME_KEY_LS = "currentUser";
 
 let user_name;
+
+//for the first time the user types in his or her name
+function handleUserNameFormSubmit(e) {
+    e.preventDefault();
+    saveUserName();
+    paintGreeting();
+    getToDo();      //in toDo.js file. after user types in his or her name, 
+                    //to-do form appears.
+}
 
 function saveUserName() {
     user_name = user_name_input.value;
     localStorage.setItem(USER_NAME_KEY_LS, user_name);
 }
 
-function handleUserNameFormSubmit(e) {
-    e.preventDefault();
-    saveUserName();
-    paintGreeting();
-}
-
-function askForName() {
+function getUserName() {
     user_name_form.classList.remove(HIDING_CN);
     user_name_form.classList.add(SHOWING_CN);
+
+    user_name_form.addEventListener("submit", handleUserNameFormSubmit);
 }
 
 function paintGreeting() {
@@ -44,8 +47,7 @@ function greetingInit() {
     if(loadName()) {
         paintGreeting();
     } else {
-        askForName();
-        user_name_form.addEventListener("submit", handleUserNameFormSubmit);
+        getUserName();
     }
 }
 
