@@ -27,6 +27,7 @@ function paintBackgroundImage() {
 function backgroundInit() {
     paintBackgroundImage();
     // background_container.addEventListener("animationstart", clockInit);
+    // background_container.addEventListener("animationstart", greetingInit);
 }
 
 backgroundInit();

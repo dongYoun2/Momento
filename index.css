@@ -63,3 +63,10 @@ body {
     color: white;
     animation: fadeIn 0.5s linear;
 }
+
+.hiding {
+    display: none;
+}
+.showing {
+    display: block;
+}
