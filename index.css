@@ -71,7 +71,6 @@ body {
     animation: fadeIn 0.5s linear;
 }
 
-
 .hiding {
     display: none;
 }
@@ -90,4 +89,8 @@ body {
 
 .toDoDone {
     text-decoration: line-through;
+}
+
+.toDoText {
+    color: white;
 }

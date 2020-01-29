@@ -5,7 +5,8 @@ const to_do_form = document.querySelector(".js-toDoForm"),
 const TO_DOS_KEY_LS = "toDos",
     TO_DO_DONE_CN = "toDoDone",
     TO_DO_NOT_DONE_CN = "toDoNotDone",
-    TO_DO_LIST_ITEM_CN = "toDoListItem";
+    TO_DO_LIST_ITEM_CN = "toDoListItem",
+    TO_DO_TEXT_CN = "toDoText";
     
 let to_dos = []; 
 
@@ -46,13 +47,14 @@ function removeAllChildren(node) {      //helper function of paintToDo()
     node.innerHTML = "";
 }
 
-function setToDoListItemClassName(checkbox) { 
+function changeToDoTextClassList(checkbox) { 
+    const toDoText = checkbox.parentNode.querySelector(`.${TO_DO_TEXT_CN}`);
     if(checkbox.checked) {
-        checkbox.parentElement.classList.remove(TO_DO_NOT_DONE_CN);
-        checkbox.parentElement.classList.add(TO_DO_DONE_CN);
+        toDoText.classList.remove(TO_DO_NOT_DONE_CN);
+        toDoText.classList.add(TO_DO_DONE_CN);
     } else {
-        checkbox.parentElement.classList.remove(TO_DO_DONE_CN);
-        checkbox.parentElement.classList.add(TO_DO_NOT_DONE_CN);
+        toDoText.classList.remove(TO_DO_DONE_CN);
+        toDoText.classList.add(TO_DO_NOT_DONE_CN);
     }
 }
 
@@ -65,20 +67,27 @@ function handleCheckboxChange(e) {
     const list_item = changed_checkbox.parentNode;
     const to_do_id = list_item.id;
 
-    setToDoListItemClassName(changed_checkbox);
+    changeToDoTextClassList(changed_checkbox);
     toggleToDoDone(to_do_id - 1);
     saveToDos();
+}
+
+function handleDeleteButtonClick(e) {
+
 }
 
 function paintToDo(idx) {
     const to_do_list_item = document.createElement("li");
     to_do_list_item.classList.add(TO_DO_LIST_ITEM_CN);
+    to_do_list_item.id = `${idx+1}`;
 
-    const to_do_delete_button = document.createElement("input");
-    to_do_delete_button.type = "button";
-    to_do_delete_button.value = "X";
+    const to_do_delete_button = document.createElement("span");
+    to_do_delete_button.addEventListener("click", handleDeleteButtonClick);
+    to_do_delete_button.classList.add("button");
+    to_do_delete_button.innerText= "❌";
 
     const to_do_text = document.createElement("span");
+    to_do_text.classList.add(TO_DO_TEXT_CN);
     to_do_text.innerText = to_dos[idx].text;
 
     const to_do_checkbox = document.createElement("input");
@@ -93,15 +102,14 @@ function paintToDo(idx) {
 
     to_do_list.appendChild(to_do_list_item);
 
-    setToDoListItemClassName(to_do_checkbox);
+    changeToDoTextClassList(to_do_checkbox);
     return to_do_list_item;
 }
 
 function paintToDoList() {
     removeAllChildren(to_do_list);
     for(let i = 0; i < to_dos.length; i++) {
-        const painted_to_do_list_item = paintToDo(i);
-        painted_to_do_list_item.id = `${i+1}`;
+        paintToDo(i);
     }
 }
 
