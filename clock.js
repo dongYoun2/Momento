@@ -1,5 +1,3 @@
-window.addEventListener("load", clockInit);
-
 const clock_container = document.querySelector(".js-clock");
 const clock_title = clock_container.querySelector("h1");
 
@@ -20,3 +18,5 @@ function clockInit() {
     paintClock();
     setInterval(paintClock, "1000");
 }
+
+clockInit();

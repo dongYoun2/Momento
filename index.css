@@ -2,6 +2,10 @@
     cursor: pointer;
 }
 
+body {
+    background-color: #2d3436;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -23,7 +27,7 @@
     animation: fadeIn 0.5s linear;
 }
 
-@keyframes rainbow {
+/* @keyframes rainbow {
     0% {
         color: red;
     } 14.3% {
@@ -41,19 +45,21 @@
     } 100% {
         color: red;
     }
-}
+} */
 
-@keyframes blackAndWhite {
+/* @keyframes colorChange {
     0% {
-        color: black;
-    } 50% {
-        color: white;
+        color: #ffb142;
+    } 33.3% {
+        color: #cc8e35;
+    } 66.6% {
+        color: #ccae62;
     } 100% {
-        color: black;
+        color: #ffb142;
     }
-}
+} */
 
 .js-clock {
-    color: black;
-    animation: blackAndWhite 6s ease-in-out infinite, fadeIn 0.3s linear;
+    color: white;
+    animation: fadeIn 0.5s linear;
 }
