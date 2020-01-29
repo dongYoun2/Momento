@@ -80,25 +80,25 @@ function paintToDo(idx) {
     const to_do_list_item = document.createElement("li");
     to_do_list_item.classList.add(TO_DO_LIST_ITEM_CN);
     to_do_list_item.id = `${idx+1}`;
+    
+    const to_do_checkbox = document.createElement("input");
+    to_do_checkbox.type="checkbox";
+    to_do_checkbox.checked = ( to_dos[idx].done ? true : false );
 
+    const to_do_text = document.createElement("span");
+    to_do_text.classList.add(TO_DO_TEXT_CN);
+    to_do_text.innerText = to_dos[idx].text;
+    
     const to_do_delete_button = document.createElement("span");
     to_do_delete_button.addEventListener("click", handleDeleteButtonClick);
     to_do_delete_button.classList.add("button");
     to_do_delete_button.innerText= "❌";
 
-    const to_do_text = document.createElement("span");
-    to_do_text.classList.add(TO_DO_TEXT_CN);
-    to_do_text.innerText = to_dos[idx].text;
-
-    const to_do_checkbox = document.createElement("input");
-    to_do_checkbox.type="checkbox";
-    to_do_checkbox.checked = ( to_dos[idx].done ? true : false );
-   
     to_do_checkbox.addEventListener("change", handleCheckboxChange);
 
-    to_do_list_item.appendChild(to_do_delete_button);
-    to_do_list_item.appendChild(to_do_text);
     to_do_list_item.appendChild(to_do_checkbox);
+    to_do_list_item.appendChild(to_do_text);
+    to_do_list_item.appendChild(to_do_delete_button);
 
     to_do_list.appendChild(to_do_list_item);
 

@@ -71,6 +71,11 @@ body {
     animation: fadeIn 0.5s linear;
 }
 
+.js-toDoList {
+    list-style-type: none;
+    padding-left: 0;
+}
+
 .hiding {
     display: none;
 }
@@ -80,6 +85,11 @@ body {
 }
 
 .toDoListItem {
+}
+
+.toDoText {
+    display: inline-block;
+    width: 250px;
     color: white;
 }
 
@@ -89,8 +99,5 @@ body {
 
 .toDoDone {
     text-decoration: line-through;
-}
-
-.toDoText {
-    color: white;
+    color: darkgray;
 }
