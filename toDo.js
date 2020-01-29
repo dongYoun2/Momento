@@ -16,6 +16,7 @@ function handleToDoFormSubmit(e) {
     to_do_input.value="";
     paintToDoList();
 }
+
 function addToDo() {
      // const current_to_do_id = to_dos.length + 1;
      const current_to_do_text = to_do_input.value;
@@ -29,6 +30,7 @@ function addToDo() {
 
      to_dos.push(current_to_do);
 }
+
 function saveToDos() {
     localStorage.setItem(TO_DOS_KEY_LS, JSON.stringify(to_dos));
 }
@@ -44,7 +46,7 @@ function removeAllChildren(node) {      //helper function of paintToDo()
     node.innerHTML = "";
 }
 
-function setCheckboxClassName(checkbox) { 
+function setToDoListItemClassName(checkbox) { 
     if(checkbox.checked) {
         checkbox.parentElement.classList.remove(TO_DO_NOT_DONE_CN);
         checkbox.parentElement.classList.add(TO_DO_DONE_CN);
@@ -54,10 +56,17 @@ function setCheckboxClassName(checkbox) {
     }
 }
 
+function toggleToDoDone(to_do_idx) {
+    to_dos[to_do_idx].done = !to_dos[to_do_idx].done;
+}
+
 function handleCheckboxChange(e) {
     const changed_checkbox = e.target;
-    setCheckboxClassName(changed_checkbox);
-    
+    const list_item = changed_checkbox.parentNode;
+    const to_do_id = list_item.id;
+
+    setToDoListItemClassName(changed_checkbox);
+    toggleToDoDone(to_do_id - 1);
     saveToDos();
 }
 
@@ -84,7 +93,7 @@ function paintToDo(idx) {
 
     to_do_list.appendChild(to_do_list_item);
 
-    setCheckboxClassName(to_do_checkbox);
+    setToDoListItemClassName(to_do_checkbox);
     return to_do_list_item;
 }
 
