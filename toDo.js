@@ -3,18 +3,21 @@ const to_do_form = document.querySelector(".js-toDoForm"),
     to_do_list = document.querySelector(".js-toDoList");
 
 const TO_DOS_KEY_LS = "toDos",
+    TO_DOS_INDEXES_ORDER_TABLE = "toDosUIOrder",
     TO_DO_DONE_CN = "toDoDone",
     TO_DO_NOT_DONE_CN = "toDoNotDone",
     TO_DO_LIST_ITEM_CN = "toDoListItem",
     TO_DO_TEXT_CN = "toDoText";
 
 let to_dos = [];
+let to_dos_indexes_order_table = [];
 
 function handleToDoFormSubmit(e) {
     e.preventDefault();
     insertToDo();
     to_do_input.value = "";
     paintToDoList();
+
 }
 
 function insertToDo() {
@@ -28,21 +31,30 @@ function insertToDo() {
         done: current_to_do_done
     };
 
-    for (let i = 0; ; i++) {
-        if (to_dos[i] === null) {
-            to_dos[i] = current_to_do;
-            break;
-        }
-        if(i === to_dos.length - 1) {
-            to_dos.push(current_to_do);
+    let full = true;    //  to_dos 배열 길이 0인것도 full로 간주
+    let find = null;
+    for(find = 0; find < to_dos.length; find++) {
+        if(to_dos[find] === null) {
+            to_dos[find] = current_to_do;
+            full = false;
             break;
         }
     }
+
+    if(full === true)
+        to_dos.push(current_to_do);
+
+    to_dos_indexes_order_table.push(`${find}`);
+    saveToDosIndexesOrderTable();
     saveToDos();
 }
 
 function saveToDos() {
     localStorage.setItem(TO_DOS_KEY_LS, JSON.stringify(to_dos));
+}
+
+function saveToDosIndexesOrderTable() {
+    localStorage.setItem(TO_DOS_INDEXES_ORDER_TABLE, JSON.stringify(to_dos_indexes_order_table));
 }
 
 function getToDo() {
@@ -83,10 +95,19 @@ function handleCheckboxChange(e) {
 
 function eraseToDoListItem(list_item) {
     to_do_list.removeChild(list_item);
+    to_do_list_child = to_do_list.firstElementChild;
+    to_dos_indexes_order_table = [];
+    for(let i=0; i<to_do_list.childElementCount; i++) {
+        // to_dos_indexes_order_table[i] = to_do_list_child.id;
+        to_dos_indexes_order_table.push(to_do_list_child.id);
+        to_do_list_child = to_do_list_child.nextElementSibling;
+    }
 }
 
 function deleteToDo(delete_idx) {
     to_dos[delete_idx] = null;
+
+    saveToDosIndexesOrderTable();
     saveToDos();
 }
 
@@ -135,19 +156,23 @@ function paintToDo(idx) {
 }
 
 function paintToDoList() {
+    // console.log(to_dos);
     removeAllChildren(to_do_list);
-    for (let i = 0; i < to_dos.length; i++) {
-        paintToDo(i);
+    for (let i = 0; i < to_dos_indexes_order_table.length; i++) {
+        const to_do_idx = to_dos_indexes_order_table[i];
+        paintToDo(to_do_idx);
     }
 }
 
 function loadToDos() {
     // local storage 에서 들고와서 전역 to_dos array에 담아야함!
     const loaded_to_dos = localStorage.getItem(TO_DOS_KEY_LS);
-    if (loaded_to_dos !== null) {
+    const loaded_to_dos_indexes_order_table = localStorage.getItem(TO_DOS_INDEXES_ORDER_TABLE);
+    if (loaded_to_dos !== null ) {
         // const parsed_to_dos = JSON.parse(loaded_to_dos);
         // to_dos = parsed_to_dos.map(function(element) {return element}); 
         to_dos = JSON.parse(loaded_to_dos);
+        to_dos_indexes_order_table = JSON.parse(loaded_to_dos_indexes_order_table);
     }
 }
 
