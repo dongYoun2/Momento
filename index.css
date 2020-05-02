@@ -1,226 +1,168 @@
-.button {
-    cursor: pointer;
-}
-
-body {
-    background-color: #2d3436;
-    font-family: "Open Sans", sans-serif;
-}
-
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    } to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.js-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    z-index: -2;
-    animation: fadeIn 0.5s linear;
-}
-
-/* @keyframes rainbow {
-    0% {
-        color: red;
-    } 14.3% {
-        color: orange;
-    } 28.6% {
-        color: yellow;
-    } 42.9% {
-        color: green;
-    } 57.2% {
-        color: blue;
-    } 71.5% {
-        color: navy;
-    } 85.5% {
-        color: purple;
-    } 100% {
-        color: red;
-    }
-} */
-
-/* @keyframes colorChange {
-    0% {
-        color: #ffb142;
-    } 33.3% {
-        color: #cc8e35;
-    } 66.6% {
-        color: #ccae62;
-    } 100% {
-        color: #ffb142;
-    }
-} */
-
-.js-clock,
-.js-greeting {
-    color: white;
-    animation: fadeIn 0.5s linear;
-}
-
-.js-clock {
-    font-weight: bold;
-    font-size: 5em;
-
-    position: absolute;
-    text-align: center;
-    vertical-align: middle;
-    top: 35%;
-    left: 50%;
-    height: fit-content;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-}
-
-.js-userNameForm,
-.js-toDoForm,
-.js-toDoList {
-    animation: fadeIn 0.5s linear;
-}
-
-.js-userNameForm {
-    position: absolute;
-    vertical-align: middle;
-    top: 50%;
-    left: 50%;
-    height: fit-content;
-
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
+.button {
+  cursor: pointer;
 }
 
 ::placeholder {
-    color: white;
-    opacity: 0.3;
+  color: white;
+  opacity: 0.3;
+}
+
+body {
+  background-color: #2d3436;
+  font-family: "Open Sans", sans-serif;
+}
+
+.main {
+  text-align: center;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  z-index: -2;
+  animation: fadeIn 0.5s linear;
+}
+
+.clock,
+.greeting {
+  color: white;
+  animation: fadeIn 0.5s linear;
+}
+
+.clock {
+  height: 25vh;
+  font-weight: bold;
+  font-size: 5em;
+  z-index: -1;
+}
+
+.usernameForm,
+.todoForm,
+.todoList {
+  animation: fadeIn 0.5s linear;
+}
+
+.usernameForm {
+  vertical-align: middle;
+  height: fit-content;
 }
 
 input:focus {
-    outline: none;
-    border: none;
-    border-bottom: 3px solid rgba(255, 255, 255, 1);
-    color: white;
+  outline: none;
+  border: none;
+  border-bottom: 3px solid rgba(255, 255, 255, 1);
+  color: white;
 }
 
-.js-userNameForm input {    
-    color: white;
-    background-color: transparent;
-    border: none;
-    padding-left: 5px;
-    padding-right: 5px;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.6);
-    font-size: 2em;
-    /* border: 1px solid red; */
+.usernameForm input {
+  color: white;
+  background-color: transparent;
+  border: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.6);
+  font-size: 2em;
+  /* border: 1px solid red; */
 }
 
-.js-greeting {
-    /* border: 1px solid red; */
-    position: absolute;
-    vertical-align: middle;
-    top: 43%;
-    left: 50%;
-    height: fit-content;
+.greeting {
+  /* border: 1px solid red; */
+  vertical-align: middle;
+  height: fit-content;
 
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-
-    font-size: 2.7em;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: normal;
-    opacity: 0.9;
+  font-size: 2.7em;
+  font-weight: normal;
+  opacity: 0.9;
 }
 
-.js-toDoForm {
-    position: absolute;
-    vertical-align: middle;
-    top: 60%;
-    left: 50%;
-    height: fit-content;
-
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
+.todoForm {
+  vertical-align: middle;
+  height: fit-content;
 }
 
-.js-toDoForm input {
-    color: white;
-    background-color: transparent;
-    border: none;
-    padding-left: 5px;
-    padding-right: 5px;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.6);
-    font-size: 1.5em;
-    /* border: 1px solid red; */
+.todoForm input {
+  color: white;
+  background-color: transparent;
+  border: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.6);
+  font-size: 1.5em;
+  /* border: 1px solid red; */
 }
 
-.js-toDoList {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: lighter;
-    list-style-type: none;
-    padding-left: 0;
+.todoList {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: lighter;
+  list-style-type: none;
+  padding-left: 0;
 
-    position: absolute;
-    vertical-align: middle;
-    top: 70%;
-    left: 50%;
-    height: fit-content;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
+  vertical-align: middle;
+  height: fit-content;
 }
 
 .hiding {
-    display: none;
+  display: none;
 }
 
 .showing {
-    display: block;
+  display: block;
 }
 
-.toDoListItem {
-    font-size: 1em;
-    margin-top: 0;
-}
+/* .toDoListItem {
+  font-size: 1em;
+  margin-top: 0;
+} */
 
 .toDoText {
-    display: inline-block;
-    width: 250px;
-    color: rgba(255, 255, 255, 0.8);
-    margin-left: 2px;
-    /* font-size: 1.5em; */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
-    white-space: nowrap;
-    overflow-x: hidden;
-    text-overflow: ellipsis;
+  display: inline-block;
+  width: 250px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-left: 2px;
+  /* font-size: 1.5em; */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }
 
 .toDoListItem span[class="button"] {
-    font-size: 0.7em;
-    padding-left: 3px;
-    position: relative;
-    top: -4px;
-    margin-bottom: 3px;
-    display: inline-block;
+  font-size: 0.7em;
+  padding-left: 3px;
+  /* position: relative; */
+  top: -4px;
+  margin-bottom: 3px;
+  display: inline-block;
 }
 
 .toDoListItem input[type="checkbox"] {
-    position: relative;
-    top: -3px;
-    cursor: pointer;
+  /* position: relative; */
+  top: -3px;
+  cursor: pointer;
 }
 
 .toDoNotDone {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .toDoDone {
-    text-decoration: line-through;
-    color: darkgray;
-    opacity: 0.8;
+  text-decoration: line-through;
+  color: darkgray;
+  opacity: 0.8;
 }

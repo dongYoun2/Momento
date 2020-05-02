@@ -10,23 +10,23 @@
 </head>
 
 <body>
-    <div class="js-background"></div>
-    <div class="js-clock">
-        <h1></h1>
+    <div class="js-background background"></div>
+    <div class="main">
+        <div class="js-clock clock">
+            <h1></h1>
+        </div>
+        <form class="js-userNameForm usernameForm hiding">
+            <input type="text" placeholder="What is your name?">
+        </form>
+        <h4 class="js-greeting greeting hiding"></h4>
+
+        <form class="js-toDoForm todoForm hiding">
+            <input type="text" placeholder="write a to-do here">
+        </form>
+
+        <ul class="js-toDoList todoList">
+        </ul>
     </div>
-
-    <form class="js-userNameForm hiding">
-        <input type="text" placeholder="What is your name?">
-    </form>
-    <h4 class="js-greeting hiding"></h4>
-
-    <form class="js-toDoForm  hiding">
-        <input type="text" placeholder="write a to-do here">
-    </form>
-
-    <ul class="js-toDoList">
-    </ul>
-
     <script>
         //these are class names in CSS
         const SHOWING_CN = "showing",
