@@ -7,18 +7,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MOMENTUM</title>
     <link rel="stylesheet" href="index.css">
+    <script src="https://kit.fontawesome.com/45ffbfbd2e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="js-background background"></div>
+    <div class="js-weather weather">
+        <span class="weather-icon">
+            <i class="fas"></i>
+        </span><br>
+        <span class="temperature"></span><br>
+        <span class="city"></span>
+    </div>
     <div class="main">
         <div class="js-clock clock">
-            <h1></h1>
+            <div></div>
         </div>
         <form class="js-userNameForm usernameForm hiding">
             <input type="text" placeholder="What is your name?">
         </form>
-        <h4 class="js-greeting greeting hiding"></h4>
+        <div class="js-greeting greeting hiding"></div>
 
         <form class="js-toDoForm todoForm hiding">
             <input type="text" placeholder="write a to-do here">
@@ -36,6 +44,7 @@
     <script src="toDo.js"></script>
     <script src="clock.js"></script>
     <script src="background.js"></script>
+    <script src="weather.js"></script>
 </body>
 
 </html>
